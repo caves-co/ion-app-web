@@ -74,6 +74,10 @@ class App extends React.Component {
       url = proto + "://" + window.location.host;
     }
 
+    url = "wss://livespot-ion-biz.zeet.app"
+    // url = "wss://curvy-starfish-84.loca.lt"
+    // url = "ws://localhost:8443"
+
     let client = new Client({url: url});
     client.url = url;
 
@@ -90,6 +94,7 @@ class App extends React.Component {
     };
 
     client.on("peer-join", (id, info) => {
+      console.log("peer-join: id", id);
       this._notification("Peer Join", "peer => " + info.name + ", join!");
       this._onSystemMessage(info.name + ", join!");
     });
